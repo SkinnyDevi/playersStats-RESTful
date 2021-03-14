@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Videogame Player Stats - RESTFul</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="js/players.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">XML RESTFul Example - Videogame Players</a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-1"></div>
+            <div class="col-sm-5 mb-3">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#players_show" id="show_all">Show all players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#player_add">Add player</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active container" id="players_show">
+
+                    </div>
+                    <div class="tab-pane container" id="player_add">
+                        <form id="form-player" class="mt-2">
+                            <div class="form-group">
+                                <label for="playerName">Player Name:</label>
+                                <input type="text" class="form-control" id="playerName" />
+                                <span id="error-name">*field required</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="playerUID">Player UID:</label>
+                                <input type="text" class="form-control" id="playerUID" />
+                                <span id="error-UID-required">*field required</span>
+                                <span id="error-UID-format">*must be a valid UID (ex: AB1:akc8383UA(EU or US or AS) - AB1:akc8383UAAS)</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="playerLevel">Player Level:</label>
+                                <input type="text" class="form-control" id="playerLevel" />
+                                <span id="error-level-required">*field required</span>
+                                <span id="error-level-cap">*must be a valid number between 1 - 100</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="defenseStat">Player Defense Level:</label>
+                                <input type="text" class="form-control" id="defenseStat" />
+                                <span id="error-def-required">*field required</span>
+                                <span id="error-def-cap">*must be a valid number between 1 - 1000</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="attackStat">Player Attack Level:</label>
+                                <input type="text" class="form-control" id="attackStat" />
+                                <span id="error-att-required">*field required</span>
+                                <span id="error-att-cap">*must be a valid number between 1 - 1000</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="hasClan">Has Clan:</label>
+                                <select class="form-control" id="hasClan">
+																	<option>-----</option>
+																	<option>True</option>
+																	<option>False</option>
+																</select>
+                                <span id="error-clan">*field required</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-7 col-md-5">
+                <div class="jumbotron">
+                    <h1>NodeJS RESTFul XML Example - Videogame Players</h1>
+                    <p>Simple example to show how to access a NodeJS RESTFul API using XML from JavaScript.</p>
+                    <p>In this example you can add players with their respective information using the "Add Player" tab, and showing all players added in the "Show all players" tab.</p>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</body>
+
+</html>

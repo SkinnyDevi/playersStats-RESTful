@@ -1,0 +1,34 @@
+#error-name,
+#error-UID-required,
+#error-UID-format,
+#error-level-required,
+#error-level-cap,
+#error-def-required,
+#error-def-cap,
+#error-att-required,
+#error-att-cap,
+#error-clan {
+    color: red;
+    display: none;
+}
+
+.card-text {
+    text-align: left;
+}
+
+
+/* .jumbotron {
+    background-color: limegreen;
+}
+
+body {
+    background-color: #03DAC6;
+}
+
+.bg-dark, .navbar-dark {
+    background-color: #3700B3 !important;
+}
+
+.card {
+    background-color: #6200EE !important;
+} */

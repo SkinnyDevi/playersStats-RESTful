@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="players">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="player" type="playerInfo" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="playerInfo">
+		<xs:sequence>
+			<xs:element name="playerTag" type="xs:string"></xs:element>
+			<xs:element name="level" type="levelCap"></xs:element>
+			<xs:element name="defenseStat" type="xs:positiveInteger"></xs:element>
+			<xs:element name="attackStat" type="xs:positiveInteger"></xs:element>
+			<xs:element name="hasClan" type="xs:boolean"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="pUIDG"></xs:attributeGroup>
+	</xs:complexType>
+
+	<xs:attributeGroup name="pUIDG">
+		<xs:attribute name="pUID" type="UIDFormat"></xs:attribute>
+	</xs:attributeGroup>
+
+	<xs:simpleType name="levelCap">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:maxExclusive value="100"></xs:maxExclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="statsCap">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:maxExclusive value="1000"></xs:maxExclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="UIDFormat">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}[0-9]:[a-z]{3}[0-9]{4}[A-Z]{2}(EU|US|AS)"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
