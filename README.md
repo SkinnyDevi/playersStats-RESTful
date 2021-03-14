@@ -30,6 +30,12 @@ Open a command line console and clone this project.
 git clone https://github.com/tcrurav/XmlRESTfulNodeJSfromJS
 ```
 
+Go to the project directory
+
+```
+cd playersStats-RESTful
+```
+
 Go to the api directory
 
 ```
@@ -56,7 +62,7 @@ open your favourite browser with the file web/player.html
 
 ### XML and XSD files 
 
-An example of XML file sent from client to web service to create a new product:
+An example of the format of the XML file sent from client to web service to add a new player:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
