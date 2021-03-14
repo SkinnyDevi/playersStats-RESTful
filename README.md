@@ -8,19 +8,19 @@ The client can:
 
 ### Screenshots
 
-* Creating a product:
+* Adding a player:
 
-![create product](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/create_product.png)
+![add_player](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/create_product.png)
 
-* Showing all products:
+* Showing all players:
 
-![show products](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/show_products.png)
+![show players](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/show_products.png)
 
-### Prerequisites
+### Dependencies
 
-Before starting you need some background on NodeJS and JavaScript. Check the links bellow.
+You will need all default NodeJS modules for this to work.
 
-To install this project you need a working NodeJS environment. Again see the links bellow...
+See the links below on how to get them setup.
 
 ### Installing
 
@@ -28,12 +28,6 @@ Open a command line console and clone this project.
 
 ```
 git clone https://github.com/tcrurav/XmlRESTfulNodeJSfromJS
-```
-
-Go to the new created directory
-
-```
-cd XmlRESTfulNodeJSfromJS
 ```
 
 Go to the api directory
@@ -51,13 +45,13 @@ npm install
 Boot your API
 
 ```
-node index.js
+node playerIndex.js
 ```
 
 Test the project with a browser
 
 ```
-open your favourite browser with the file XmlRESTfulNodeJSfromJS/web/index.html
+open your favourite browser with the file web/player.html
 ```
 
 ### XML and XSD files 
@@ -66,66 +60,82 @@ An example of XML file sent from client to web service to create a new product:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<products>
-    <product>
-        <name>Samsung S7</name>
-        <price>352</price>
-    </product>
-</products>
+<players>
+  <player pUID="Formatted UID with Regex">
+    <playerTag>String</playerTag>
+    <level>Int 1 - 100</level>
+    <defenseStat>Int 1 - 1000</defenseStat>
+    <attackStat>Int 1 - 1000</attackStat>
+    <hasClan>true/false</hasClan>
+  </player>
+</players>
 ```
 
 An example of XML file stored in the Server:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<products>
-    <product>
-        <name>Samsung Galaxy S10 Dual</name>
-        <price>1003</price>
-    </product>
-    <product>
-        <name>LG V30 LTE 64GB H930 Plata</name>
-        <price>334</price>
-    </product>
-    <product>
-        <name>Samsung Galaxy A6 Plus</name>
-        <price>239</price>
-    </product>
-</products>
+<players>
+  <player pUID="AB1:akc8383UAAS">
+    <playerTag>myTag51</playerTag>
+    <level>50</level>
+    <defenseStat>651</defenseStat>
+    <attackStat>587</attackStat>
+    <hasClan>true</hasClan>
+  </player>
+</players>
 ```
 
 XSD file in Server:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">  
-    <xs:element name="products">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="product" type="productType" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:complexType name="productType">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string"/>
-            <xs:element name="price" type="xs:decimal"/>
-        </xs:sequence>                        
-    </xs:complexType>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="players">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="player" type="playerInfo" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    <!-- Types, Restrictions and Regex -->
+	<xs:complexType name="playerInfo">
+		<xs:sequence>
+			<xs:element name="playerTag" type="xs:string"></xs:element>
+			<xs:element name="level" type="levelCap"></xs:element>
+			<xs:element name="defenseStat" type="xs:positiveInteger"></xs:element>
+			<xs:element name="attackStat" type="xs:positiveInteger"></xs:element>
+			<xs:element name="hasClan" type="xs:boolean"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="pUIDG"></xs:attributeGroup>
+	</xs:complexType>
+
+	<xs:attributeGroup name="pUIDG">
+		<xs:attribute name="pUID" type="UIDFormat"></xs:attribute>
+	</xs:attributeGroup>
+
+	<xs:simpleType name="levelCap">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:maxExclusive value="100"></xs:maxExclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="statsCap">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:maxExclusive value="1000"></xs:maxExclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="UIDFormat">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}[0-9]:[a-z]{3}[0-9]{4}[A-Z]{2}(EU|US|AS)"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
 ```
 
-# Validation screenshots
-
-A validation test offline made with Netbeans IDE. 
-
-![validation test](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/products_validation.png)
-
-This is made dinamically in the project with the library xsd-schema-validator.
-
-![validation test](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/products_validation_online.png)
-
-## Built With
+## Related links
 
 * [NodeJS](https://nodejs.org/es/) - Node.js un entorno de ejecución para JavaScript
 * [xmldom](https://github.com/jindw/xmldom) - A JavaScript implementation of W3C DOM for Node.js.
@@ -133,9 +143,3 @@ This is made dinamically in the project with the library xsd-schema-validator.
 * [express-xml-bodyparser](https://github.com/remind101/express-xml-bodyparser) - For those rare cases when you have to parse incoming raw xml-body requests. This middleware works with any connect- or express-based nodejs application.
 * [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp) - Allows an HTML client to read, update, create and detele data from a web service.
 
-
-## Acknowledgments
-
-* https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md. A very good Readme.md template.
-* https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript. How to Connect to an API with JavaScript.
-* https://www.w3schools.com/xml/dom_intro.asp. Understanding the DOM is a must for anyone working with HTML or XML. You can learn a lot with this tutorial.
