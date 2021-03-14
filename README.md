@@ -10,11 +10,11 @@ The client can:
 
 * Adding a player:
 
-![add_player](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/create_product.png)
+![add_player](https://github.com/SkinnyDevi/playersStats-RESTful/blob/main/web/img/add_player.png)
 
 * Showing all players:
 
-![show players](https://github.com/tcrurav/XmlRESTfulNodeJSfromJS/blob/master/web/img/show_products.png)
+![show players](https://github.com/SkinnyDevi/playersStats-RESTful/blob/main/web/img/show_players.png)
 
 ### Dependencies
 
@@ -27,7 +27,7 @@ See the links below on how to get them setup.
 Open a command line console and clone this project.
 
 ```
-git clone https://github.com/tcrurav/XmlRESTfulNodeJSfromJS
+git clone https://github.com/SkinnyDevi/playersStats-RESTful
 ```
 
 Go to the project directory
