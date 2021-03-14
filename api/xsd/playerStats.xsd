@@ -10,6 +10,7 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- Types, Restrictions and Regex -->
 	<xs:complexType name="playerInfo">
 		<xs:sequence>
 			<xs:element name="playerTag" type="xs:string"></xs:element>
